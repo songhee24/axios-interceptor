@@ -6,7 +6,7 @@ function App() {
     const [payments, setPayments] = useState([])
 
     useEffect(() => {
-        axios.get('http://159.65.142.42/api/payment-methods')
+        axios.get('http://159.65.142.42/api/branches')
             .then(r => {
                 console.log(r)
                 setPayments(r.data)
