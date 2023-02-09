@@ -1,3 +1,15 @@
+import {useState} from "react";
+
 export const Branches = () => {
-    return <h1>Branches</h1>
+    const [branches, setBranches] = useState([])
+
+    if (branches?.length) {
+        return (
+            <ul>
+                {branches.map((branch) => <li key={branch.id}>{branch.address}</li>)}
+            </ul>
+        )
+    }
+
+    return <p>Nothing found</p>
 }
