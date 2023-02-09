@@ -28,3 +28,18 @@ axiosInstance.interceptors.request.use(
         return Promise.reject(error)
     }
 )
+
+axiosInstance.interceptors.response.use(
+    (response) => {
+        return Promise.resolve(response)
+    },
+    (error) => {
+        if (error.response?.status === 401) {
+            // we also can check is that response contains 401 error
+            // we need to remove old token and logout
+            // removeItemFromStorage(JWT_TOKEN_KEY)
+            throw new Error('401 unauthotized')
+        }
+        return Promise.reject(error)
+    }
+)
