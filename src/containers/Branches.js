@@ -1,11 +1,20 @@
 import {useEffect, useState} from "react";
+import {getAllBranches} from "../api/branchesApi";
 
 export const Branches = () => {
     const [branches, setBranches] = useState([])
 
+    const fetchBranches = async () => {
+        try {
+            const response = await getAllBranches()
+            setBranches(response.data)
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
     useEffect(() => {
-
+        fetchBranches()
     }, [])
 
 
