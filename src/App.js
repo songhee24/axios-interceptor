@@ -2,10 +2,9 @@ import './App.css';
 import {useEffect, useState} from "react";
 import axiosInstance from "./config/axiosInstance";
 
-const TitleList = (items ) => {
+const TitleList = ({items} ) => {
      let content = <p>Not Found!</p>
 
-    console.log(items)
     if (items && items?.length !== 0) {
         content = items?.map(item => <li key={item.id}>{item?.address || item?.name}</li>)
     }
