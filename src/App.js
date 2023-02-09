@@ -5,6 +5,7 @@ import axiosInstance from "./config/axiosInstance";
 
 function App() {
     const [branches, setBranches] = useState([])
+    const [payments, setPayment] = useState([])
 
     useEffect(() => {
         axiosInstance.get('api/branches')
@@ -13,7 +14,12 @@ function App() {
                 setBranches(r.data)
             })
             .catch(e => console.log(e))
+    }, [])
 
+    useEffect(() => {
+        axiosInstance.get('api/payment-methods')
+            .then(r => setPayment(r.data))
+            .catch(e => console.log(e))
     }, [])
 
     const renderPayments = useMemo(() => {
