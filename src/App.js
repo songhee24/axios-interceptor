@@ -7,7 +7,7 @@ function App() {
     const [branches, setBranches] = useState([])
 
     useEffect(() => {
-        axiosInstance.get('')
+        axiosInstance.get('api/branches')
             .then(r => {
                 console.log(r)
                 setBranches(r.data)
